@@ -1,6 +1,6 @@
 {
   "name": "js-miniapp-sdk",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "main": "./dist/js-miniapp-sdk.cjs",
   "module": "./dist/js-miniapp-sdk.mjs",

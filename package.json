@@ -6,7 +6,7 @@
   "module": "./dist/js-miniapp-sdk.mjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alifcapital/js-miniapp-sdk.git"
+    "url": "git+https://github.com/mhushang/js-miniapp-sdk.git"
   },
   "exports": {
     ".": {

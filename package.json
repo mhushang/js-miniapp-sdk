@@ -1,17 +1,17 @@
 {
-  "name": "js-miniapp-sdk",
+  "name": "js-miniapp-bridge",
   "private": false,
   "version": "0.0.1",
-  "main": "./dist/js-miniapp-sdk.cjs",
-  "module": "./dist/js-miniapp-sdk.mjs",
+  "main": "./dist/js-miniapp-bridge.cjs",
+  "module": "./dist/js-miniapp-bridge.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mhushang/js-miniapp-sdk.git"
   },
   "exports": {
     ".": {
-      "require": "./dist/js-miniapp-sdk.cjs",
-      "import": "./dist/js-miniapp-sdk.mjs"
+      "require": "./dist/js-miniapp-bridge.cjs",
+      "import": "./dist/js-miniapp-bridge.mjs"
     }
   },
   "scripts": {

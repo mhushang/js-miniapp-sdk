@@ -1,4 +1,3 @@
-const ge = (t, e) => t + e;
 /*! Capacitor: https://capacitorjs.com/ - MIT License */
 const ee = (t) => {
   const e = /* @__PURE__ */ new Map();
@@ -6,19 +5,19 @@ const ee = (t) => {
   const r = t.CapacitorPlatforms || {
     currentPlatform: { name: "web" },
     platforms: e
-  }, i = (n, a) => {
-    r.platforms.set(n, a);
-  }, s = (n) => {
-    r.platforms.has(n) && (r.currentPlatform = r.platforms.get(n));
+  }, i = (s, a) => {
+    r.platforms.set(s, a);
+  }, n = (s) => {
+    r.platforms.has(s) && (r.currentPlatform = r.platforms.get(s));
   };
-  return r.addPlatform = i, r.setPlatform = s, r;
-}, te = (t) => t.CapacitorPlatforms = ee(t), D = /* @__PURE__ */ te(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {});
-D.addPlatform;
-D.setPlatform;
-var k;
+  return r.addPlatform = i, r.setPlatform = n, r;
+}, te = (t) => t.CapacitorPlatforms = ee(t), G = /* @__PURE__ */ te(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {});
+G.addPlatform;
+G.setPlatform;
+var O;
 (function(t) {
   t.Unimplemented = "UNIMPLEMENTED", t.Unavailable = "UNAVAILABLE";
-})(k || (k = {}));
+})(O || (O = {}));
 class S extends Error {
   constructor(e, r, i) {
     super(e), this.message = e, this.code = r, this.data = i;
@@ -27,61 +26,61 @@ class S extends Error {
 const re = (t) => {
   var e, r;
   return t != null && t.androidBridge ? "android" : !((r = (e = t == null ? void 0 : t.webkit) === null || e === void 0 ? void 0 : e.messageHandlers) === null || r === void 0) && r.bridge ? "ios" : "web";
-}, se = (t) => {
-  var e, r, i, s, n;
-  const a = t.CapacitorCustomPlatform || null, o = t.Capacitor || {}, f = o.Plugins = o.Plugins || {}, c = t.CapacitorPlatforms, O = () => a !== null ? a.name : re(t), v = ((e = c == null ? void 0 : c.currentPlatform) === null || e === void 0 ? void 0 : e.getPlatform) || O, j = () => v() !== "web", G = ((r = c == null ? void 0 : c.currentPlatform) === null || r === void 0 ? void 0 : r.isNativePlatform) || j, z = (l) => {
-    const d = x.get(l);
-    return !!(d != null && d.platforms.has(v()) || H(l));
-  }, F = ((i = c == null ? void 0 : c.currentPlatform) === null || i === void 0 ? void 0 : i.isPluginAvailable) || z, K = (l) => {
+}, ne = (t) => {
+  var e, r, i, n, s;
+  const a = t.CapacitorCustomPlatform || null, o = t.Capacitor || {}, f = o.Plugins = o.Plugins || {}, l = t.CapacitorPlatforms, k = () => a !== null ? a.name : re(t), v = ((e = l == null ? void 0 : l.currentPlatform) === null || e === void 0 ? void 0 : e.getPlatform) || k, $ = () => v() !== "web", B = ((r = l == null ? void 0 : l.currentPlatform) === null || r === void 0 ? void 0 : r.isNativePlatform) || $, z = (c) => {
+    const d = j.get(c);
+    return !!(d != null && d.platforms.has(v()) || W(c));
+  }, F = ((i = l == null ? void 0 : l.currentPlatform) === null || i === void 0 ? void 0 : i.isPluginAvailable) || z, K = (c) => {
     var d;
-    return (d = o.PluginHeaders) === null || d === void 0 ? void 0 : d.find((y) => y.name === l);
-  }, H = ((s = c == null ? void 0 : c.currentPlatform) === null || s === void 0 ? void 0 : s.getPluginHeader) || K, V = (l) => t.console.error(l), J = (l, d, y) => Promise.reject(`${y} does not have an implementation of "${d}".`), x = /* @__PURE__ */ new Map(), N = (l, d = {}) => {
-    const y = x.get(l);
+    return (d = o.PluginHeaders) === null || d === void 0 ? void 0 : d.find((y) => y.name === c);
+  }, W = ((n = l == null ? void 0 : l.currentPlatform) === null || n === void 0 ? void 0 : n.getPluginHeader) || K, V = (c) => t.console.error(c), J = (c, d, y) => Promise.reject(`${y} does not have an implementation of "${d}".`), j = /* @__PURE__ */ new Map(), N = (c, d = {}) => {
+    const y = j.get(c);
     if (y)
-      return console.warn(`Capacitor plugin "${l}" already registered. Cannot register plugins twice.`), y.proxy;
-    const w = v(), C = H(l);
+      return console.warn(`Capacitor plugin "${c}" already registered. Cannot register plugins twice.`), y.proxy;
+    const w = v(), C = W(c);
     let P;
     const X = async () => (!P && w in d ? P = typeof d[w] == "function" ? P = await d[w]() : P = d[w] : a !== null && !P && "web" in d && (P = typeof d.web == "function" ? P = await d.web() : P = d.web), P), Y = (u, b) => {
-      var h, g;
+      var g, h;
       if (C) {
         const p = C == null ? void 0 : C.methods.find((m) => b === m.name);
         if (p)
-          return p.rtype === "promise" ? (m) => o.nativePromise(l, b.toString(), m) : (m, E) => o.nativeCallback(l, b.toString(), m, E);
-        if (u)
-          return (h = u[b]) === null || h === void 0 ? void 0 : h.bind(u);
-      } else {
+          return p.rtype === "promise" ? (m) => o.nativePromise(c, b.toString(), m) : (m, E) => o.nativeCallback(c, b.toString(), m, E);
         if (u)
           return (g = u[b]) === null || g === void 0 ? void 0 : g.bind(u);
-        throw new S(`"${l}" plugin is not implemented on ${w}`, k.Unimplemented);
+      } else {
+        if (u)
+          return (h = u[b]) === null || h === void 0 ? void 0 : h.bind(u);
+        throw new S(`"${c}" plugin is not implemented on ${w}`, O.Unimplemented);
       }
     }, U = (u) => {
       let b;
-      const h = (...g) => {
+      const g = (...h) => {
         const p = X().then((m) => {
           const E = Y(m, u);
           if (E) {
-            const _ = E(...g);
+            const _ = E(...h);
             return b = _ == null ? void 0 : _.remove, _;
           } else
-            throw new S(`"${l}.${u}()" is not implemented on ${w}`, k.Unimplemented);
+            throw new S(`"${c}.${u}()" is not implemented on ${w}`, O.Unimplemented);
         });
         return u === "addListener" && (p.remove = async () => b()), p;
       };
-      return h.toString = () => `${u.toString()}() { [capacitor code] }`, Object.defineProperty(h, "name", {
+      return g.toString = () => `${u.toString()}() { [capacitor code] }`, Object.defineProperty(g, "name", {
         value: u,
         writable: !1,
         configurable: !1
-      }), h;
-    }, I = U("addListener"), M = U("removeListener"), Z = (u, b) => {
-      const h = I({ eventName: u }, b), g = async () => {
-        const m = await h;
-        M({
+      }), g;
+    }, H = U("addListener"), R = U("removeListener"), Z = (u, b) => {
+      const g = H({ eventName: u }, b), h = async () => {
+        const m = await g;
+        R({
           eventName: u,
           callbackId: m
         }, b);
-      }, p = new Promise((m) => h.then(() => m({ remove: g })));
+      }, p = new Promise((m) => g.then(() => m({ remove: h })));
       return p.remove = async () => {
-        console.warn("Using addListener() without 'await' is deprecated."), await g();
+        console.warn("Using addListener() without 'await' is deprecated."), await h();
       }, p;
     }, A = new Proxy({}, {
       get(u, b) {
@@ -91,37 +90,37 @@ const re = (t) => {
           case "toJSON":
             return () => ({});
           case "addListener":
-            return C ? Z : I;
+            return C ? Z : H;
           case "removeListener":
-            return M;
+            return R;
           default:
             return U(b);
         }
       }
     });
-    return f[l] = A, x.set(l, {
-      name: l,
+    return f[c] = A, j.set(c, {
+      name: c,
       proxy: A,
       platforms: /* @__PURE__ */ new Set([
         ...Object.keys(d),
         ...C ? [w] : []
       ])
     }), A;
-  }, Q = ((n = c == null ? void 0 : c.currentPlatform) === null || n === void 0 ? void 0 : n.registerPlugin) || N;
-  return o.convertFileSrc || (o.convertFileSrc = (l) => l), o.getPlatform = v, o.handleError = V, o.isNativePlatform = G, o.isPluginAvailable = F, o.pluginMethodNoop = J, o.registerPlugin = Q, o.Exception = S, o.DEBUG = !!o.DEBUG, o.isLoggingEnabled = !!o.isLoggingEnabled, o.platform = o.getPlatform(), o.isNative = o.isNativePlatform(), o;
-}, ne = (t) => t.Capacitor = se(t), $ = /* @__PURE__ */ ne(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {}), T = $.registerPlugin, L = $.Plugins;
-class W {
+  }, Q = ((s = l == null ? void 0 : l.currentPlatform) === null || s === void 0 ? void 0 : s.registerPlugin) || N;
+  return o.convertFileSrc || (o.convertFileSrc = (c) => c), o.getPlatform = v, o.handleError = V, o.isNativePlatform = B, o.isPluginAvailable = F, o.pluginMethodNoop = J, o.registerPlugin = Q, o.Exception = S, o.DEBUG = !!o.DEBUG, o.isLoggingEnabled = !!o.isLoggingEnabled, o.platform = o.getPlatform(), o.isNative = o.isNativePlatform(), o;
+}, se = (t) => t.Capacitor = ne(t), x = /* @__PURE__ */ se(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {}), T = x.registerPlugin, L = x.Plugins;
+class I {
   constructor(e) {
     this.listeners = {}, this.windowListeners = {}, e && (console.warn(`Capacitor WebPlugin "${e.name}" config object was deprecated in v3 and will be removed in v4.`), this.config = e);
   }
   addListener(e, r) {
     this.listeners[e] || (this.listeners[e] = []), this.listeners[e].push(r);
-    const s = this.windowListeners[e];
-    s && !s.registered && this.addWindowListener(s);
-    const n = async () => this.removeListener(e, r), a = Promise.resolve({ remove: n });
+    const n = this.windowListeners[e];
+    n && !n.registered && this.addWindowListener(n);
+    const s = async () => this.removeListener(e, r), a = Promise.resolve({ remove: s });
     return Object.defineProperty(a, "remove", {
       value: async () => {
-        console.warn("Using addListener() without 'await' is deprecated."), await n();
+        console.warn("Using addListener() without 'await' is deprecated."), await s();
       }
     }), a;
   }
@@ -133,7 +132,7 @@ class W {
   }
   notifyListeners(e, r) {
     const i = this.listeners[e];
-    i && i.forEach((s) => s(r));
+    i && i.forEach((n) => n(r));
   }
   hasListeners(e) {
     return !!this.listeners[e].length;
@@ -149,17 +148,17 @@ class W {
     };
   }
   unimplemented(e = "not implemented") {
-    return new $.Exception(e, k.Unimplemented);
+    return new x.Exception(e, O.Unimplemented);
   }
   unavailable(e = "not available") {
-    return new $.Exception(e, k.Unavailable);
+    return new x.Exception(e, O.Unavailable);
   }
   async removeListener(e, r) {
     const i = this.listeners[e];
     if (!i)
       return;
-    const s = i.indexOf(r);
-    this.listeners[e].splice(s, 1), this.listeners[e].length || this.removeWindowListener(this.windowListeners[e]);
+    const n = i.indexOf(r);
+    this.listeners[e].splice(n, 1), this.listeners[e].length || this.removeWindowListener(this.windowListeners[e]);
   }
   addWindowListener(e) {
     window.addEventListener(e.windowEventName, e.handler), e.registered = !0;
@@ -168,21 +167,21 @@ class W {
     !e || (window.removeEventListener(e.windowEventName, e.handler), e.registered = !1);
   }
 }
-const R = (t) => encodeURIComponent(t).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape), q = (t) => t.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
-class oe extends W {
+const q = (t) => encodeURIComponent(t).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape), D = (t) => t.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+class oe extends I {
   async getCookies() {
     const e = document.cookie, r = {};
     return e.split(";").forEach((i) => {
       if (i.length <= 0)
         return;
-      let [s, n] = i.replace(/=/, "CAP_COOKIE").split("CAP_COOKIE");
-      s = q(s).trim(), n = q(n).trim(), r[s] = n;
+      let [n, s] = i.replace(/=/, "CAP_COOKIE").split("CAP_COOKIE");
+      n = D(n).trim(), s = D(s).trim(), r[n] = s;
     }), r;
   }
   async setCookie(e) {
     try {
-      const r = R(e.key), i = R(e.value), s = `; expires=${(e.expires || "").replace("expires=", "")}`, n = (e.path || "/").replace("path=", ""), a = e.url != null && e.url.length > 0 ? `domain=${e.url}` : "";
-      document.cookie = `${r}=${i || ""}${s}; path=${n}; ${a};`;
+      const r = q(e.key), i = q(e.value), n = `; expires=${(e.expires || "").replace("expires=", "")}`, s = (e.path || "/").replace("path=", ""), a = e.url != null && e.url.length > 0 ? `domain=${e.url}` : "";
+      document.cookie = `${r}=${i || ""}${n}; path=${s}; ${a};`;
     } catch (r) {
       return Promise.reject(r);
     }
@@ -217,70 +216,70 @@ T("CapacitorCookies", {
 const ie = async (t) => new Promise((e, r) => {
   const i = new FileReader();
   i.onload = () => {
-    const s = i.result;
-    e(s.indexOf(",") >= 0 ? s.split(",")[1] : s);
-  }, i.onerror = (s) => r(s), i.readAsDataURL(t);
+    const n = i.result;
+    e(n.indexOf(",") >= 0 ? n.split(",")[1] : n);
+  }, i.onerror = (n) => r(n), i.readAsDataURL(t);
 }), ae = (t = {}) => {
   const e = Object.keys(t);
-  return Object.keys(t).map((s) => s.toLocaleLowerCase()).reduce((s, n, a) => (s[n] = t[e[a]], s), {});
-}, ce = (t, e = !0) => t ? Object.entries(t).reduce((i, s) => {
-  const [n, a] = s;
+  return Object.keys(t).map((n) => n.toLocaleLowerCase()).reduce((n, s, a) => (n[s] = t[e[a]], n), {});
+}, le = (t, e = !0) => t ? Object.entries(t).reduce((i, n) => {
+  const [s, a] = n;
   let o, f;
-  return Array.isArray(a) ? (f = "", a.forEach((c) => {
-    o = e ? encodeURIComponent(c) : c, f += `${n}=${o}&`;
-  }), f.slice(0, -1)) : (o = e ? encodeURIComponent(a) : a, f = `${n}=${o}`), `${i}&${f}`;
-}, "").substr(1) : null, le = (t, e = {}) => {
-  const r = Object.assign({ method: t.method || "GET", headers: t.headers }, e), s = ae(t.headers)["content-type"] || "";
+  return Array.isArray(a) ? (f = "", a.forEach((l) => {
+    o = e ? encodeURIComponent(l) : l, f += `${s}=${o}&`;
+  }), f.slice(0, -1)) : (o = e ? encodeURIComponent(a) : a, f = `${s}=${o}`), `${i}&${f}`;
+}, "").substr(1) : null, ce = (t, e = {}) => {
+  const r = Object.assign({ method: t.method || "GET", headers: t.headers }, e), n = ae(t.headers)["content-type"] || "";
   if (typeof t.data == "string")
     r.body = t.data;
-  else if (s.includes("application/x-www-form-urlencoded")) {
-    const n = new URLSearchParams();
+  else if (n.includes("application/x-www-form-urlencoded")) {
+    const s = new URLSearchParams();
     for (const [a, o] of Object.entries(t.data || {}))
-      n.set(a, o);
-    r.body = n.toString();
-  } else if (s.includes("multipart/form-data")) {
-    const n = new FormData();
+      s.set(a, o);
+    r.body = s.toString();
+  } else if (n.includes("multipart/form-data")) {
+    const s = new FormData();
     if (t.data instanceof FormData)
       t.data.forEach((o, f) => {
-        n.append(f, o);
+        s.append(f, o);
       });
     else
       for (const o of Object.keys(t.data))
-        n.append(o, t.data[o]);
-    r.body = n;
+        s.append(o, t.data[o]);
+    r.body = s;
     const a = new Headers(r.headers);
     a.delete("content-type"), r.headers = a;
   } else
-    (s.includes("application/json") || typeof t.data == "object") && (r.body = JSON.stringify(t.data));
+    (n.includes("application/json") || typeof t.data == "object") && (r.body = JSON.stringify(t.data));
   return r;
 };
-class de extends W {
+class de extends I {
   async request(e) {
-    const r = le(e, e.webFetchExtra), i = ce(e.params, e.shouldEncodeUrlParams), s = i ? `${e.url}?${i}` : e.url, n = await fetch(s, r), a = n.headers.get("content-type") || "";
-    let { responseType: o = "text" } = n.ok ? e : {};
+    const r = ce(e, e.webFetchExtra), i = le(e.params, e.shouldEncodeUrlParams), n = i ? `${e.url}?${i}` : e.url, s = await fetch(n, r), a = s.headers.get("content-type") || "";
+    let { responseType: o = "text" } = s.ok ? e : {};
     a.includes("application/json") && (o = "json");
-    let f, c;
+    let f, l;
     switch (o) {
       case "arraybuffer":
       case "blob":
-        c = await n.blob(), f = await ie(c);
+        l = await s.blob(), f = await ie(l);
         break;
       case "json":
-        f = await n.json();
+        f = await s.json();
         break;
       case "document":
       case "text":
       default:
-        f = await n.text();
+        f = await s.text();
     }
-    const O = {};
-    return n.headers.forEach((v, j) => {
-      O[j] = v;
+    const k = {};
+    return s.headers.forEach((v, $) => {
+      k[$] = v;
     }), {
       data: f,
-      headers: O,
-      status: n.status,
-      url: n.url
+      headers: k,
+      status: s.status,
+      url: s.url
     };
   }
   async get(e) {
@@ -303,18 +302,21 @@ T("CapacitorHttp", {
   web: () => new de()
 });
 /*! Ionic Portals: https://ionic.io/portals - Commercial License */
-const B = T("Portals", {
+const M = T("Portals", {
   web: () => Promise.resolve().then(function() {
-    return fe;
+    return be;
   }).then((t) => new t.PortalsWeb()),
   android: () => Promise.resolve().then(function() {
-    return me;
+    return ge;
   }).then((t) => new t.PortalsAndroid()),
   ios: () => Promise.resolve().then(function() {
-    return Pe;
+    return he;
   }).then((t) => new t.PortalsIOS())
 });
-class ue extends W {
+function ue() {
+  return window.portalInitialContext;
+}
+class fe extends I {
   async publish(e) {
   }
   async subscribe(e, r) {
@@ -326,19 +328,19 @@ class ue extends W {
   async unsubscribe(e) {
   }
 }
-const fe = /* @__PURE__ */ Object.freeze({
+const be = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  PortalsWeb: ue
+  PortalsWeb: fe
 });
-class be {
+class me {
   async publish(e) {
     return L.Portals.publishNative(e);
   }
   async subscribe(e, r) {
     return new Promise((i) => {
-      let s = !1;
-      L.Portals.subscribeNative(e, (n) => {
-        s ? r(n) : (i(n), s = !0);
+      let n = !1;
+      L.Portals.subscribeNative(e, (s) => {
+        n ? r(s) : (i(s), n = !0);
       });
     });
   }
@@ -346,19 +348,19 @@ class be {
     return L.Portals.unsubscribeNative(e);
   }
 }
-const me = /* @__PURE__ */ Object.freeze({
+const ge = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  PortalsAndroid: be
+  PortalsAndroid: me
 });
-class he {
+class Pe {
   async publish(e) {
     return L.Portals.publishNative(e);
   }
   async subscribe(e, r) {
     return new Promise((i) => {
-      let s = !1;
-      L.Portals.subscribeNative(e, (n) => {
-        s ? r(n) : (i(n), s = !0);
+      let n = !1;
+      L.Portals.subscribeNative(e, (s) => {
+        n ? r(s) : (i(s), n = !0);
       });
     });
   }
@@ -366,12 +368,16 @@ class he {
     return L.Portals.unsubscribeNative(e);
   }
 }
-const Pe = /* @__PURE__ */ Object.freeze({
+const he = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  PortalsIOS: he
-}), pe = () => B.publish({ topic: "check", data: "success" }), we = async (t, e) => await B.subscribe({ topic: t }, e);
+  PortalsIOS: Pe
+}), pe = async (t) => {
+  const { topic: e, data: r } = t;
+  return M.publish({ topic: e, data: r });
+}, we = async (t, e) => M.subscribe(t, e), ve = async (t) => M.unsubscribe(t), ye = () => ue();
 export {
-  pe as publishCheck,
-  we as subscribeCheck,
-  ge as sum
+  ye as GetInitialContext,
+  pe as SendMessage,
+  we as SubscribeToMessage,
+  ve as UnsubscribeToMessage
 };

@@ -1,11 +1,34 @@
-import Portals, { SubscriptionCallback } from "@ionic/portals";
+import Portals, { getInitialContext } from "@ionic/portals";
+import {
+  IInitialContext,
+  IMessage,
+  IMessageSubscription,
+  IPortalSubscription,
+  ISubscribeOptions,
+  ISubscriptionCallback,
+} from "./types";
 
-type Messages = { topic: "check"; data: "cancel" | "fail" | "success" };
+export const SendMessage = async (params: IMessage) => {
+  const { topic, data } = params;
 
-export const publishCheck = () =>
-  Portals.publish<Messages>({ topic: "check", data: "success" });
+  return Portals.publish<IMessage>({ topic, data });
+};
 
-export const subscribeCheck = async (
-  topic: string,
-  callback: SubscriptionCallback
-) => await Portals.subscribe({ topic }, callback);
+export const SubscribeToMessage = async (
+  options: ISubscribeOptions,
+  callback: ISubscriptionCallback
+): Promise<IPortalSubscription> => {
+  return Portals.subscribe<IMessageSubscription>(options, callback);
+};
+
+export const UnsubscribeToMessage = async (
+  options: IPortalSubscription
+): Promise<void> => {
+  return Portals.unsubscribe(options);
+};
+
+export const GetInitialContext = <T = unknown>():
+  | IInitialContext<T>
+  | undefined => {
+  return getInitialContext();
+};

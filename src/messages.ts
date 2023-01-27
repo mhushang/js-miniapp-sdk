@@ -21,7 +21,7 @@ export const SubscribeToMessage = async (
   return Portals.subscribe<IMessageSubscription>(options, callback);
 };
 
-export const UnsubscribeToMessage = async (
+export const UnsubscribeFromMessage = async (
   options: IPortalSubscription
 ): Promise<void> => {
   return Portals.unsubscribe(options);

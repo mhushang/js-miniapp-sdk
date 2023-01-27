@@ -1,8 +1,18 @@
 # JS MiniApps SDK
 
-JS bridge for iOS/Android platforms which uses Portal
+JS bridge for iOS/Android platforms which uses Ionic Portals (https://ionic.io/docs/portals)
 
 ## Usage
+
+- Install package into project: `yarn add js-miniapp-bridge` or `npm i js-miniapp-bridge`
+- Import module in Web project, example: `import { SendMessage } from "js-miniapp-bridge"` (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/web)
+- Available methods: `SendMessage, SubscribeToMessage, UnsubscribeFromMessage, GetInitialContext`
+
+## Examples
+- Web: (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/web)
+- React Native (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/reactNative)
+
+## Available scripts of the library
 
 The project contains the following scripts:
 

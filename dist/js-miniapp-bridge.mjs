@@ -28,10 +28,10 @@ const re = (t) => {
   return t != null && t.androidBridge ? "android" : !((r = (e = t == null ? void 0 : t.webkit) === null || e === void 0 ? void 0 : e.messageHandlers) === null || r === void 0) && r.bridge ? "ios" : "web";
 }, ne = (t) => {
   var e, r, i, n, s;
-  const a = t.CapacitorCustomPlatform || null, o = t.Capacitor || {}, f = o.Plugins = o.Plugins || {}, l = t.CapacitorPlatforms, k = () => a !== null ? a.name : re(t), v = ((e = l == null ? void 0 : l.currentPlatform) === null || e === void 0 ? void 0 : e.getPlatform) || k, $ = () => v() !== "web", B = ((r = l == null ? void 0 : l.currentPlatform) === null || r === void 0 ? void 0 : r.isNativePlatform) || $, z = (c) => {
+  const a = t.CapacitorCustomPlatform || null, o = t.Capacitor || {}, f = o.Plugins = o.Plugins || {}, l = t.CapacitorPlatforms, k = () => a !== null ? a.name : re(t), v = ((e = l == null ? void 0 : l.currentPlatform) === null || e === void 0 ? void 0 : e.getPlatform) || k, $ = () => v() !== "web", B = ((r = l == null ? void 0 : l.currentPlatform) === null || r === void 0 ? void 0 : r.isNativePlatform) || $, F = (c) => {
     const d = j.get(c);
     return !!(d != null && d.platforms.has(v()) || W(c));
-  }, F = ((i = l == null ? void 0 : l.currentPlatform) === null || i === void 0 ? void 0 : i.isPluginAvailable) || z, K = (c) => {
+  }, z = ((i = l == null ? void 0 : l.currentPlatform) === null || i === void 0 ? void 0 : i.isPluginAvailable) || F, K = (c) => {
     var d;
     return (d = o.PluginHeaders) === null || d === void 0 ? void 0 : d.find((y) => y.name === c);
   }, W = ((n = l == null ? void 0 : l.currentPlatform) === null || n === void 0 ? void 0 : n.getPluginHeader) || K, V = (c) => t.console.error(c), J = (c, d, y) => Promise.reject(`${y} does not have an implementation of "${d}".`), j = /* @__PURE__ */ new Map(), N = (c, d = {}) => {
@@ -107,9 +107,9 @@ const re = (t) => {
       ])
     }), A;
   }, Q = ((s = l == null ? void 0 : l.currentPlatform) === null || s === void 0 ? void 0 : s.registerPlugin) || N;
-  return o.convertFileSrc || (o.convertFileSrc = (c) => c), o.getPlatform = v, o.handleError = V, o.isNativePlatform = B, o.isPluginAvailable = F, o.pluginMethodNoop = J, o.registerPlugin = Q, o.Exception = S, o.DEBUG = !!o.DEBUG, o.isLoggingEnabled = !!o.isLoggingEnabled, o.platform = o.getPlatform(), o.isNative = o.isNativePlatform(), o;
-}, se = (t) => t.Capacitor = ne(t), x = /* @__PURE__ */ se(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {}), T = x.registerPlugin, L = x.Plugins;
-class I {
+  return o.convertFileSrc || (o.convertFileSrc = (c) => c), o.getPlatform = v, o.handleError = V, o.isNativePlatform = B, o.isPluginAvailable = z, o.pluginMethodNoop = J, o.registerPlugin = Q, o.Exception = S, o.DEBUG = !!o.DEBUG, o.isLoggingEnabled = !!o.isLoggingEnabled, o.platform = o.getPlatform(), o.isNative = o.isNativePlatform(), o;
+}, se = (t) => t.Capacitor = ne(t), x = /* @__PURE__ */ se(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : {}), I = x.registerPlugin, L = x.Plugins;
+class T {
   constructor(e) {
     this.listeners = {}, this.windowListeners = {}, e && (console.warn(`Capacitor WebPlugin "${e.name}" config object was deprecated in v3 and will be removed in v4.`), this.config = e);
   }
@@ -168,7 +168,7 @@ class I {
   }
 }
 const q = (t) => encodeURIComponent(t).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape), D = (t) => t.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
-class oe extends I {
+class oe extends T {
   async getCookies() {
     const e = document.cookie, r = {};
     return e.split(";").forEach((i) => {
@@ -210,7 +210,7 @@ class oe extends I {
     }
   }
 }
-T("CapacitorCookies", {
+I("CapacitorCookies", {
   web: () => new oe()
 });
 const ie = async (t) => new Promise((e, r) => {
@@ -253,7 +253,7 @@ const ie = async (t) => new Promise((e, r) => {
     (n.includes("application/json") || typeof t.data == "object") && (r.body = JSON.stringify(t.data));
   return r;
 };
-class de extends I {
+class de extends T {
   async request(e) {
     const r = ce(e, e.webFetchExtra), i = le(e.params, e.shouldEncodeUrlParams), n = i ? `${e.url}?${i}` : e.url, s = await fetch(n, r), a = s.headers.get("content-type") || "";
     let { responseType: o = "text" } = s.ok ? e : {};
@@ -298,11 +298,11 @@ class de extends I {
     return this.request(Object.assign(Object.assign({}, e), { method: "DELETE" }));
   }
 }
-T("CapacitorHttp", {
+I("CapacitorHttp", {
   web: () => new de()
 });
 /*! Ionic Portals: https://ionic.io/portals - Commercial License */
-const M = T("Portals", {
+const M = I("Portals", {
   web: () => Promise.resolve().then(function() {
     return be;
   }).then((t) => new t.PortalsWeb()),
@@ -316,7 +316,7 @@ const M = T("Portals", {
 function ue() {
   return window.portalInitialContext;
 }
-class fe extends I {
+class fe extends T {
   async publish(e) {
   }
   async subscribe(e, r) {
@@ -379,5 +379,5 @@ export {
   ye as GetInitialContext,
   pe as SendMessage,
   we as SubscribeToMessage,
-  ve as UnsubscribeToMessage
+  ve as UnsubscribeFromMessage
 };

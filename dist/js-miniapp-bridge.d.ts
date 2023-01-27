@@ -30,7 +30,7 @@ export interface IInitialContext<T = unknown> {
 }
 export declare const SendMessage: (params: IMessage) => Promise<void>;
 export declare const SubscribeToMessage: (options: ISubscribeOptions, callback: ISubscriptionCallback) => Promise<IPortalSubscription>;
-export declare const UnsubscribeToMessage: (options: IPortalSubscription) => Promise<void>;
+export declare const UnsubscribeFromMessage: (options: IPortalSubscription) => Promise<void>;
 export declare const GetInitialContext: <T = unknown>() => IInitialContext<T> | undefined;
 
 export {};

@@ -1,6 +1,6 @@
 export {
   SendMessage,
   SubscribeToMessage,
-  UnsubscribeToMessage,
+  UnsubscribeFromMessage,
   GetInitialContext,
 } from "./messages";

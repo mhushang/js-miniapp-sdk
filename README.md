@@ -13,6 +13,8 @@ JS bridge for iOS/Android platforms which uses Ionic Portals (https://ionic.io/d
 - Web: (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/web)
 - React Native (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/reactNative)
 
+https://www.loom.com/share/12fa9842a713462eb3a9edade4985224
+
 ## Available scripts of the library
 
 The project contains the following scripts:

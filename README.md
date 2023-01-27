@@ -9,6 +9,7 @@ JS bridge for iOS/Android platforms which uses Ionic Portals (https://ionic.io/d
 - Available methods: `SendMessage, SubscribeToMessage, UnsubscribeFromMessage, GetInitialContext`
 
 ## Examples
+
 - Web: (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/web)
 - React Native (https://github.com/mhushang/js-miniapp-sdk-examples/tree/main/reactNative)
 
